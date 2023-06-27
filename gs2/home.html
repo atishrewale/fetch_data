@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body class="container">
+    <div id="div1">
+        
+    </div>
+    <input type="submit" value="Submit" id="btn">
+    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+    <h1>Employee list</h1>
+        <table id="table" border="6" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>language</th>
+                </tr>
+            </thead>
+            
+
+
+        </table>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        $(window).load(makerequest())
+
+        function makerequest(){
+            console.log('button workd......')
+            fetch('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json').then(function(response){
+                console.log(response)
+                return response.json()
+            }).then(json => show(json))
+
+        }
+        function show(employee){
+            let table = document.getElementById('table');
+            for(let i = 0; i < employee.length; i++){
+                let obj = employee[i]
+                console.log(obj)
+                let row = document.createElement('tr');
+                let id = document.createElement('td');
+                let name = document.createElement('td');
+                let language = document.createElement('td');
+
+                id.innerHTML = obj.id
+                name.innerHTML = obj.name
+                language.innerHTML = obj.language
+
+                row.appendChild(id)
+                row.appendChild(name)
+                row.appendChild(language)
+
+                table.appendChild(row)
+
+            }
+
+        }
+
+        // async function makerequest(){
+        //     try{
+        //         console.log('button clicked........')
+        //         const response = await fetch('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
+        //         if(!response.ok){
+        //             throw Error(response.statusText)
+        //         }
+        //         console.log(response)
+        //         const json_data = await response.json()
+        //         console.log(json_data)
+        //         let output = document.getElementById('allpost')
+
+        //         data1.forEach(element => {
+        //             output.innerHTML += `
+        //             <div>ID:${element.id}</div>
+        //             <div>Brand:${element.brand}</div>
+        //             <div>category:${element.category}</div>
+        //             <hr>
+        //             `
+        //         });                
+        //     }catch(error){
+        //         console.log(error)
+        //     }
+        // }
+
+
+
+    </script>
+
+</body>
+</html>

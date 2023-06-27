@@ -1,0 +1,11 @@
+{
+    "name":"adoo",
+    "roll": 101,
+    "city": "mUmbai",
+    "mobile": 1234567890,
+    "gadjets": {
+        "mobile": "yes",
+        "monitor": "yes",
+        "computer": "no"
+    }
+}
